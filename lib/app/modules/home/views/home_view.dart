@@ -1,3 +1,4 @@
+import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -10,14 +11,18 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('HomeView'),
+        title: const Text('Ongkos Kirim Indonesia'),
         centerTitle: true,
       ),
-      body: const Center(
-        child: Text(
-          'HomeView is working',
-          style: TextStyle(fontSize: 20),
-        ),
+      body: ListView(
+        padding: EdgeInsets.all(20),
+        children: [
+          DropdownSearch<String>(
+            items: (f, cs) => ["Item 1", 'Item 2', 'Item 3', 'Item 4'],
+            popupProps: PopupProps.menu(
+                disabledItemFn: (item) => item == 'Item 3', fit: FlexFit.loose),
+          ),
+        ],
       ),
     );
   }
